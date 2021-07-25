@@ -1,10 +1,19 @@
+import { useState, useCallback } from "react";
 import "./styles.css";
 
+import Todos from "components/Todos";
+import Form from "components/Form";
+import { useTodos } from "./context/todos/todos.provider";
+
 export default function App() {
+  const {
+    state: { todos }
+  } = useTodos();
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div>
+      <Form />
+      <Todos todos={todos} />
     </div>
   );
 }
